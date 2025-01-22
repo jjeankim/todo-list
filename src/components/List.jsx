@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./List.css";
 import TodoItem from "./TodoItem";
 
-const List = ({ todos, onUpdate }) => {
+const List = ({ todos, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
 
   const onChangeSearch = (e) => {
@@ -11,7 +11,9 @@ const List = ({ todos, onUpdate }) => {
 
   const getFiltersData = () => {
     if (search === "") return todos;
-    return todos.filter((todo) => todo.content.toLowerCase().includes(search.toLowerCase()));
+    return todos.filter((todo) =>
+      todo.content.toLowerCase().includes(search.toLowerCase())
+    );
   };
 
   const filterdTodos = getFiltersData();
@@ -26,7 +28,12 @@ const List = ({ todos, onUpdate }) => {
       ></input>
       <div className="todos_wrapper">
         {filterdTodos.map((todo) => (
-          <TodoItem key={todo.id} {...todo} onUpdate={onUpdate}/>
+          <TodoItem
+            key={todo.id}
+            {...todo}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+          />
         ))}
       </div>
     </div>
