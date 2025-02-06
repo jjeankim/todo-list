@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "./TodoItem.css";
 
 const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
@@ -6,7 +7,7 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
   };
 
   const onClickDeleteButton = () => {
-    onDelete(id)
+    onDelete(id);
   };
   return (
     <div className="TodoItem">
@@ -18,4 +19,13 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
   );
 };
 
-export default TodoItem;
+// export default memo(TodoItem, (prevProps, nextProps) => {
+//   if (prevProps.id !== nextProps.id) return false;
+//   if (prevProps.isDone !== nextProps.isDone) return false;
+//   if (prevProps.content !== nextProps.content) return false;
+//   if (prevProps.date !== nextProps.date) return false;
+
+//   return true;
+// });
+
+export default memo(TodoItem)
