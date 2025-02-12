@@ -1,4 +1,4 @@
-import { useRef, useReducer, useCallback } from "react";
+import { useRef, useReducer, useCallback, createContext } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
@@ -35,11 +35,13 @@ function reducer(state, action) {
         item.id === action.targetId ? { ...item, isDone: !item.isDone } : item
       );
     case "DELETE":
-      return state.filter(item => item.id !== action.targetId)
+      return state.filter((item) => item.id !== action.targetId);
     default:
       return state;
   }
 }
+
+export const TodoContext = createContext();
 
 function App() {
   const [todos, dispatch] = useReducer(reducer, mockData);
@@ -55,27 +57,31 @@ function App() {
         date: new Date().getTime(),
       },
     });
-  },[]);
+  }, []);
 
   const onUpdate = useCallback((targetId) => {
     dispatch({
       type: "UPDATE",
       targetId: targetId,
     });
-  },[]);
+  }, []);
 
   const onDelete = useCallback((targetId) => {
     dispatch({
       type: "DELETE",
       targetId: targetId,
-    })
-  },[]);
+    });
+  }, []);
 
   return (
     <div className="App">
       <Header />
-      <Editor onCreate={onCreate} />
-      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
+      <TodoContext.Provider value={{
+        todos, onCreate, onUpdate, onDelete
+      }}>
+        <Editor />
+        <List />
+      </TodoContext.Provider>
     </div>
   );
 }
