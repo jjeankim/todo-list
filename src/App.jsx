@@ -11,7 +11,7 @@ import Header from "./components/Header";
 import List from "./components/List";
 import { createTodo, deleteTodo, updateTodo } from "./api/todo";
 
-const BASE_URL = "https://todo-api-3yui.onrender.com";
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
 function reducer(state, action) {
   switch (action.type) {
