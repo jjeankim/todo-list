@@ -4,6 +4,7 @@ import { TodoDispatchContext } from "../App";
 
 const TodoItem = ({ id, isDone, content, date }) => {
   const { onUpdate, onDelete } = useContext(TodoDispatchContext)
+  console.log("todoid" , id , typeof id)
 
   const onChangeCheckbox = () => {
     onUpdate(id);
@@ -14,7 +15,7 @@ const TodoItem = ({ id, isDone, content, date }) => {
   };
   return (
     <div className="TodoItem">
-      <input onChange={onChangeCheckbox} checked={isDone} type="checkbox" />
+      <input onChange={onChangeCheckbox} checked={!!isDone} type="checkbox" />
       <div className="content">{content}</div>
       <div className="date">{new Date(date).toLocaleDateString()}</div>
       <button onClick={onClickDeleteButton}>삭제</button>
