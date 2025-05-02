@@ -9,6 +9,9 @@ import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
+import { createTodo, deleteTodo, updateTodo } from "./api/todo";
+
+const BASE_URL = "https://todo-api-3yui.onrender.com";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,7 +42,7 @@ function App() {
   useEffect(() => {
     const getTask = async () => {
       try {
-        const res = await fetch("https://todo-api-3yui.onrender.com/tasks");
+        const res = await fetch(`${BASE_URL}/tasks`);
         const data = await res.json();
 
         const converted = data.map((task) => ({
@@ -59,14 +62,7 @@ function App() {
 
   const onCreate = useCallback(async (content) => {
     try {
-      const res = await fetch("https://todo-api-3yui.onrender.com/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ content, isComplete: false }),
-      });
-      const created = await res.json();
+      const created = await createTodo(content);
       dispatch({
         type: "CREATE",
         data: {
@@ -80,41 +76,28 @@ function App() {
     }
   }, []);
 
-  const onUpdate = useCallback(async (targetId) => {
-    const current = todos.find((todo) => todo.id === targetId);
-    if (!current) return;
+  const onUpdate = useCallback(
+    async (targetId) => {
+      const current = todos.find((todo) => todo.id === targetId);
+      if (!current) return;
 
-    const res = await fetch(
-      `https://todo-api-3yui.onrender.com/tasks/${targetId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
+      const updated = await updateTodo(targetId, !current.isDone);
+      dispatch({
+        type: "UPDATE",
+        data: {
+          id: updated._id,
+          content: updated.content,
+          isDone: updated.isComplete,
+          date: new Date(updated.updatedAt).getTime(),
         },
-        body: JSON.stringify({
-          isComplete: !current.isDone,
-        }),
-      }
-    );
-    const updated = await res.json();
-    dispatch({
-      type: "UPDATE",
-      data: {
-        id: updated._id,
-        content: updated.content,
-        isDone: updated.isComplete,
-        date: new Date(updated.updatedAt).getTime(),
-      },
-    });
-  }, [todos]);
+      });
+    },
+    [todos]
+  );
 
   const onDelete = useCallback(async (targetId) => {
-    console.log(targetId)
     try {
-      await fetch(`https://todo-api-3yui.onrender.com/tasks/${targetId}`, {
-        method: "DELETE",
-      });
-
+      await deleteTodo(targetId);
       dispatch({
         type: "DELETE",
         targetId,
