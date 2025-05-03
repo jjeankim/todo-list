@@ -18,7 +18,7 @@
 
 
 ## 📅개발 기간
-기존에 작업한 React에 백엔드 개발만 약 1주일
+기존 React 프론트엔드 앱과 연동할 수 있도록, 백엔드는 Express + MongoDB 기반으로 1주일간 개발하였습니다.
 
 <br />
 
@@ -26,26 +26,31 @@
 ## ⚙️기술 스택
 
 **Front-End**
-- React 19
-- JavaScript (ES6+)
-- CSS
-- Netlify (배포)
+
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Hosted on Netlify](https://img.shields.io/badge/Hosted_on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+
+
 
 **Back-End**
-- Node.js
-- Express.js
-- MongoDB
-- Render
+
+![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=black)
+![Express](https://img.shields.io/badge/Express-888888?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Backend on Render](https://img.shields.io/badge/Backend_on-Render-0099FF?style=for-the-badge&logo=render&logoColor=white)
 
 <br />
 
 
 ## 🔨 사용 라이브러리 및 도구
-- react-router-dom
-- dotenv
-- cors
-- mongoose
-- nodemon
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
+![Dotenv](https://img.shields.io/badge/dotenv-000000?style=for-the-badge)
+![CORS](https://img.shields.io/badge/cors-7D4698?style=for-the-badge)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
+![Nodemon](https://img.shields.io/badge/nodemon-76D04B?style=for-the-badge)
+
 
 <br />
 
@@ -59,7 +64,7 @@
 | 삭제 기능 | 할 일 항목을 개별 삭제할 수 있습니다. |
 | 검색 기능 | 키워드로 실시간 필터링이 가능합니다. |
 | 날짜 표기 | 생성 및 업데이트 날짜를 출력합니다. |
-| 백엔드 연동 | CRUD 전부 백에드와 연결 (MogoDB) |
+| 백엔드 연동 | CRUD 전부 백엔드와 연결 (MogoDB Atlas) |
 | Open Graph | 공유 시 썸네일, 제목, 설명이 노출되도록 SEO 메타태그 설정 |
 
 <br />
