@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# ✏️ Todo List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![og-image](https://todo-list-jjeankim.netlify.app/thumbnail.png)
 
-## Available Scripts
+## 🖥️ 프로젝트 배포 링크
 
-In the project directory, you can run:
+🔗 https://todo-list-jjeankim.netlify.app
 
-### `npm start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📄프로젝트 소개
+간단하고 직관적인 할 일 관리 앱입니다.
+할 일을 등록하고, 체크하여 완료 여부를 관리할 수 있으며, 검색 기능으로 원하는 항목을 빠르게 찾을 수 있습니다.
+백엔드는 MongoDB와 Express로 구성되어 있으며, 프론트는 React 기반 SPA로 구성되어 있습니다.
 
-### `npm test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 📅개발 기간
+기존 React 프론트엔드 앱과 연동할 수 있도록, 백엔드는 Express + MongoDB 기반으로 1주일간 개발하였습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙️기술 스택
 
-### `npm run eject`
+**Front-End**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Hosted on Netlify](https://img.shields.io/badge/Hosted_on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Back-End**
 
-## Learn More
+![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=black)
+![Express](https://img.shields.io/badge/Express-888888?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Backend on Render](https://img.shields.io/badge/Backend_on-Render-0099FF?style=for-the-badge&logo=render&logoColor=white)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## 🔨 사용 라이브러리 및 도구
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
+![Dotenv](https://img.shields.io/badge/dotenv-000000?style=for-the-badge)
+![CORS](https://img.shields.io/badge/cors-7D4698?style=for-the-badge)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
+![Nodemon](https://img.shields.io/badge/nodemon-76D04B?style=for-the-badge)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## 🧑‍💻프로젝트 주요 기능
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| 기능 | 설명 |
+|------|------|
+| 할 일 등록 | 새로운 할 일을 입력하고 추가할 수 있습니다. |
+| 상태 토글 | 체크박스를 통해 할 일 완료 상태를 토글할 수 있습니다. |
+| 삭제 기능 | 할 일 항목을 개별 삭제할 수 있습니다. |
+| 검색 기능 | 키워드로 실시간 필터링이 가능합니다. |
+| 날짜 표기 | 생성 및 업데이트 날짜를 출력합니다. |
+| 백엔드 연동 | CRUD 전부 백엔드와 연결 (MogoDB Atlas) |
+| Open Graph | 공유 시 썸네일, 제목, 설명이 노출되도록 SEO 메타태그 설정 |
 
-### Advanced Configuration
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## 💻 사용 예시
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| 할 일 등록 |
+|:---:|
+|<img src="https://github.com/user-attachments/assets/3861e5f1-8be0-4b47-ad28-638f503cce53" width=600 />|
 
-### `npm run build` fails to minify
+| 상태 토글 |
+|:---:|
+|<img src="https://github.com/user-attachments/assets/613ceb07-fee1-413c-98d2-4ef4c573c8ac" width=600 />|
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| 삭제 기능 |
+|:---:|
+|<img src="https://github.com/user-attachments/assets/058de574-f4e6-4aed-bef6-63cfb573626a" width=600 />|
+
+| 검색 기능 |
+|:---:|
+|<img src="https://github.com/user-attachments/assets/531a3956-bb31-4a9a-9123-f7805997cd31" width=600 />|
+
