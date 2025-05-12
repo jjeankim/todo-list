@@ -5,15 +5,15 @@ import { TodoStateContext } from "../App";
 
 const List = () => {
   const todos  = useContext(TodoStateContext)
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
 
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
   const getFiltersData = () => {
     if (search === "") return todos;
-    return todos.filter((todo) =>
+    return todos?.filter((todo) =>
       todo.content.toLowerCase().includes(search.toLowerCase())
     );
   };
@@ -29,7 +29,7 @@ const List = () => {
         placeholder="검색어를 입력하세요"
       ></input>
       <div className="todos_wrapper">
-        {filterdTodos.map((todo) => (
+        {filterdTodos?.map((todo) => (
           <TodoItem
             key={todo.id}
             {...todo}

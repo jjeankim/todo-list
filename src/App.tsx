@@ -10,10 +10,16 @@ import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
 import { createTodo, deleteTodo, updateTodo } from "./api/todo";
+import {
+  TaskFromAPI,
+  Todo,
+  TodoDispatchContextType,
+  TodoAction,
+} from "./types/todo";
 
 const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
-function reducer(state, action) {
+function reducer(state: Todo[], action: TodoAction): Todo[] {
   switch (action.type) {
     case "INIT":
       return action.data;
@@ -33,8 +39,10 @@ function reducer(state, action) {
   }
 }
 
-export const TodoStateContext = createContext();
-export const TodoDispatchContext = createContext();
+export const TodoStateContext = createContext<Todo[] | undefined>(undefined);
+export const TodoDispatchContext = createContext<
+  TodoDispatchContextType | undefined
+>(undefined);
 
 function App() {
   const [todos, dispatch] = useReducer(reducer, []);
@@ -45,11 +53,12 @@ function App() {
         const res = await fetch(`${BASE_URL}/tasks`);
         const data = await res.json();
 
-        const converted = data.map((task) => ({
+        const converted = data.map((task: TaskFromAPI) => ({
           id: task._id,
           content: task.content,
           isDone: task.isComplete,
-          date: new Date(task.createdAt).getTime(),
+          createdAt: new Date(task.createdAt).getTime(),
+          updatedAt: new Date(task.updatedAt).getTime(),
         }));
 
         dispatch({ type: "INIT", data: converted });
@@ -60,7 +69,7 @@ function App() {
     getTask();
   }, []);
 
-  const onCreate = useCallback(async (content) => {
+  const onCreate = useCallback(async (content: string) => {
     try {
       const created = await createTodo(content);
       dispatch({
@@ -68,7 +77,9 @@ function App() {
         data: {
           id: created._id,
           content: created.content,
-          date: new Date(created.createdAt).getTime(),
+          isDone: created.isComplete,
+          createdAt: new Date(created.createdAt).getTime(),
+          updatedAt: new Date(created.updatedAt).getTime(),
         },
       });
     } catch (error) {
@@ -77,7 +88,7 @@ function App() {
   }, []);
 
   const onUpdate = useCallback(
-    async (targetId) => {
+    async (targetId: string) => {
       const current = todos.find((todo) => todo.id === targetId);
       if (!current) return;
 
@@ -88,14 +99,15 @@ function App() {
           id: updated._id,
           content: updated.content,
           isDone: updated.isComplete,
-          date: new Date(updated.updatedAt).getTime(),
+          createdAt: new Date(updated.createdAt).getTime(),
+          updatedAt: new Date(updated.updatedAt).getTime(),
         },
       });
     },
     [todos]
   );
 
-  const onDelete = useCallback(async (targetId) => {
+  const onDelete = useCallback(async (targetId: string) => {
     try {
       await deleteTodo(targetId);
       dispatch({

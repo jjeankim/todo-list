@@ -1,11 +1,13 @@
+import { TaskFromAPI } from "../types/todo";
+
 const BASE_URL = "https://todo-api-3yui.onrender.com";
 
-export const fetchTodos = async () => {
+export const fetchTodos = async ():Promise<TaskFromAPI[]> => {
   const res = await fetch(`${BASE_URL}/tasks`);
   return await res.json();
 };
 
-export const createTodo = async (content) => {
+export const createTodo = async (content: string): Promise<TaskFromAPI> => {
   const res = await fetch(`${BASE_URL}/tasks`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -14,7 +16,10 @@ export const createTodo = async (content) => {
   return await res.json();
 };
 
-export const updateTodo = async (id, isComplete) => {
+export const updateTodo = async (
+  id: string,
+  isComplete: boolean
+): Promise<TaskFromAPI> => {
   const res = await fetch(`${BASE_URL}/tasks/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -23,6 +28,6 @@ export const updateTodo = async (id, isComplete) => {
   return await res.json();
 };
 
-export const deleteTodo = async (id) => {
+export const deleteTodo = async (id:string) => {
   await fetch(`${BASE_URL}/tasks/${id}`, { method: "DELETE" });
 };
